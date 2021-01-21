@@ -14,13 +14,14 @@ public class FirstGdxGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		//img = new Texture("badlogic.jpg");
-		TextureRegion tex1 = new TextureRegion(new Texture("heli1.png"));
+		img = new Texture("badlogic.jpg");
+		/*TextureRegion tex1 = new TextureRegion(new Texture("heli1.png"));
 		TextureRegion tex2 = new TextureRegion(new Texture("heli2.png"));
 		TextureRegion tex3 = new TextureRegion(new Texture("heli3.png"));
 		TextureRegion tex4 = new TextureRegion(new Texture("heli4.png"));
 
 		Animation playerAnimation = new Animation(0.1f, tex1, tex2, tex3, tex4);
+		*/
 	}
 
 	@Override
@@ -35,6 +36,6 @@ public class FirstGdxGame extends ApplicationAdapter {
 	@Override
 	public void dispose () {
 		batch.dispose();
-		text1.dispose();
+		img.dispose();
 	}
 }
