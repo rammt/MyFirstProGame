@@ -5,36 +5,59 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.math.Vector3;
 
 public class FirstGdxGame extends ApplicationAdapter {
-	SpriteBatch batch;
-	Texture img;
-	//Texture img2;
-	
+	private SpriteBatch batch;
+	private Texture img;
+	private Sprite sprite;
+	private Vector3 vec;
+	private float xFart = 4;
+	private float yFart = 4;
+
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		//img = new Texture("badlogic.jpg");
-		TextureRegion tex1 = new TextureRegion(new Texture("heli1.png"));
-		TextureRegion tex2 = new TextureRegion(new Texture("heli2.png"));
-		TextureRegion tex3 = new TextureRegion(new Texture("heli3.png"));
-		TextureRegion tex4 = new TextureRegion(new Texture("heli4.png"));
-
-		Animation playerAnimation = new Animation(0.1f, tex1, tex2, tex3, tex4);
+		img = new Texture("heli1.png");
+		sprite = new Sprite(img);
+		vec = new Vector3(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2,0);
 	}
 
 	@Override
 	public void render () {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
+//|| vec.y > Gdx.graphics.getHeight()
+
+		if(vec.x > Gdx.graphics.getWidth() - sprite.getWidth()/2){
+			xFart -= xFart;
+
+		}
+		if(vec.y > Gdx.graphics.getHeight()- sprite.getHeight()/2){
+			yFart -= yFart;
+		}
+		/*
+		if(vec.y > Gdx.graphics.getHeight() && vec.x < Gdx.graphics.getWidth()){
+			yFart -= yFart;
+			xFart += xFart;
+			//sprite.flip(false, true);
+		}
+		if(vec.x > Gdx.graphics.getWidth() && vec.y < Gdx.graphics.getHeight()){
+			yFart += yFart;
+			xFart -= xFart;
+			sprite.flip(true, false);
+		}*/
+		vec.x += xFart;
+		vec.y += yFart;
+
 		batch.begin();
-		batch.draw(img, 0, 0);
+		batch.draw(sprite, vec.x-sprite.getWidth()/2, vec.y-sprite.getHeight()/2);
 		batch.end();
 	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
-		text1.dispose();
 	}
 }
