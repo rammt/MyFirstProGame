@@ -32,9 +32,11 @@ public class FirstGdxGame extends ApplicationAdapter {
 		// Change direction
 		if(vec.x > Gdx.graphics.getWidth() - sprite.getWidth()/2 || vec.x - sprite.getWidth()/2 < 0){
 			xSpeed = -xSpeed;
+			sprite.flip(true,false);
 		}
 		if(vec.y > Gdx.graphics.getHeight() - sprite.getHeight()/2 || vec.y - sprite.getHeight()/2 < 0){
 			ySpeed = -ySpeed;
+			sprite.flip(true,false);
 		}
 
 		vec.x += xSpeed;
