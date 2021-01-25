@@ -13,8 +13,8 @@ public class FirstGdxGame extends ApplicationAdapter {
 	private Texture img;
 	private Sprite sprite;
 	private Vector3 vec;
-	private float xFart = 4;
-	private float yFart = 4;
+	private float xSpeed = 4;
+	private float ySpeed = 4;
 
 	@Override
 	public void create () {
@@ -28,25 +28,17 @@ public class FirstGdxGame extends ApplicationAdapter {
 	public void render () {
 		Gdx.gl.glClearColor(1, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-//|| vec.y > Gdx.graphics.getHeight()
 
-		if(vec.x > Gdx.graphics.getWidth() - sprite.getWidth()/2){
-			xFart = -xFart;
-
+		// Change direction
+		if(vec.x > Gdx.graphics.getWidth() - sprite.getWidth()/2 || vec.x - sprite.getWidth()/2 < 0){
+			xSpeed = -xSpeed;
 		}
-		if(vec.y > Gdx.graphics.getHeight() - sprite.getHeight()/2){
-			yFart = -yFart;
-		}
-		if(vec.x - sprite.getWidth()/2 < 0){
-			xFart = -xFart;
-
-		}
-		if(vec.y - sprite.getHeight()/2 < 0){
-			yFart = -yFart;
+		if(vec.y > Gdx.graphics.getHeight() - sprite.getHeight()/2 || vec.y - sprite.getHeight()/2 < 0){
+			ySpeed = -ySpeed;
 		}
 
-		vec.x += xFart;
-		vec.y += yFart;
+		vec.x += xSpeed;
+		vec.y += ySpeed;
 
 		batch.begin();
 		batch.draw(sprite, vec.x-sprite.getWidth()/2, vec.y-sprite.getHeight()/2);
