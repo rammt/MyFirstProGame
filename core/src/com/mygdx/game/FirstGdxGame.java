@@ -31,23 +31,20 @@ public class FirstGdxGame extends ApplicationAdapter {
 //|| vec.y > Gdx.graphics.getHeight()
 
 		if(vec.x > Gdx.graphics.getWidth() - sprite.getWidth()/2){
-			xFart -= xFart;
+			xFart = -xFart;
 
 		}
-		if(vec.y > Gdx.graphics.getHeight()- sprite.getHeight()/2){
-			yFart -= yFart;
+		if(vec.y > Gdx.graphics.getHeight() - sprite.getHeight()/2){
+			yFart = -yFart;
 		}
-		/*
-		if(vec.y > Gdx.graphics.getHeight() && vec.x < Gdx.graphics.getWidth()){
-			yFart -= yFart;
-			xFart += xFart;
-			//sprite.flip(false, true);
+		if(vec.x - sprite.getWidth()/2 < 0){
+			xFart = -xFart;
+
 		}
-		if(vec.x > Gdx.graphics.getWidth() && vec.y < Gdx.graphics.getHeight()){
-			yFart += yFart;
-			xFart -= xFart;
-			sprite.flip(true, false);
-		}*/
+		if(vec.y - sprite.getHeight()/2 < 0){
+			yFart = -yFart;
+		}
+
 		vec.x += xFart;
 		vec.y += yFart;
 
