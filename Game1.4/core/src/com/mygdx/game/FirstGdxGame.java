@@ -47,7 +47,7 @@ public class FirstGdxGame extends ApplicationAdapter {
 			ySpeed = -ySpeed;
 		}
 
-		if(rightPos.y > Gdx.graphics.getHeight() - paddleRight.getHeight()/2 || rightPos.y - paddleRight.getHeight()/2 < 0){
+		else if(rightPos.y > Gdx.graphics.getHeight() - paddleRight.getHeight()/2 || rightPos.y - paddleRight.getHeight()/2 < 0){
 			ySpeed = -ySpeed;
 		}
 
