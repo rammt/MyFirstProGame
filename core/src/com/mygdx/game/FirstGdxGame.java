@@ -13,7 +13,7 @@ public class FirstGdxGame extends ApplicationAdapter {
 	private Texture img;
 	private Sprite sprite;
 	private Vector3 vec;
-	private float xSpeed = 4;
+	private float xSpeed = -4;
 	private float ySpeed = 4;
 
 	@Override
@@ -22,6 +22,7 @@ public class FirstGdxGame extends ApplicationAdapter {
 		img = new Texture("heli1.png");
 		sprite = new Sprite(img);
 		vec = new Vector3(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2,0);
+		sprite.flip(xSpeed > 0, false);
 	}
 
 	@Override
@@ -36,7 +37,6 @@ public class FirstGdxGame extends ApplicationAdapter {
 		}
 		if(vec.y > Gdx.graphics.getHeight() - sprite.getHeight()/2 || vec.y - sprite.getHeight()/2 < 0){
 			ySpeed = -ySpeed;
-			sprite.flip(true,false);
 		}
 
 		vec.x += xSpeed;
