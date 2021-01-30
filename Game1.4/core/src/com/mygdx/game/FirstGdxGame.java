@@ -31,14 +31,14 @@ public class FirstGdxGame extends ApplicationAdapter {
 
 	private int randomNumber;
 
-	public void randomSpeeed(float deltaTime) {
+	/*public void randomSpeeed(float deltaTime) {
 		countDown -= deltaTime;
 		if (countDown <= 0) {
 			Random random = new Random();
 			randomNumber= random.nextInt(3) + 1;
 			countDown += 1000; // add one second
 		}
-	}
+	}*/
 
 	@Override
 	public void create () {
@@ -74,36 +74,32 @@ public class FirstGdxGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		if (Gdx.input.isTouched() && IsInsideScreen(leftPos.x, leftPos.y)) {
-			leftPos.x = Gdx.input.getX();
+		/*if (Gdx.input.isTouched() && IsInsideScreen(leftPos.x, leftPos.y)) {
+			leftPos.x = Gdx.graphics.getWidth();
 			leftPos.y = Gdx.graphics.getHeight()-Gdx.input.getY();
 
-			if (leftPos.x > Gdx.graphics.getWidth() - paddleLeft.getWidth() / 2) {
-				leftPos.x = Gdx.graphics.getWidth() - paddleLeft.getWidth() / 2 ;
+			if (leftPos.x > Gdx.graphics.getWidth() ||leftPos.x < Gdx.graphics.getWidth()  ) {
+				leftPos.x = Gdx.graphics.getWidth() ;
 			}
 			if (leftPos.y > Gdx.graphics.getHeight() - paddleLeft.getHeight() / 2) {
 				leftPos.y = Gdx.graphics.getHeight() - paddleLeft.getHeight()/2;
 			}
-			if (leftPos.x < 0+ paddleLeft.getWidth()/2 ){
-				leftPos.x = 0 + paddleLeft.getWidth()/2;
-			}
 			if (leftPos.y < 0+ paddleLeft.getHeight()/2) {
 				leftPos.y = 0 + paddleLeft.getHeight()/2;
 			}
-		}
+		}*/
 
 		if(rightPos.y > Gdx.graphics.getHeight() - paddleRight.getHeight()/2 || rightPos.y - paddleRight.getHeight()/2 < 0){
 			paddleSpeed = -paddleSpeed;
 		}
-
+		rightPos.y += paddleSpeed;
 		// Change ball direction
 
 		if(ballPos.y > Gdx.graphics.getHeight() - ball.getHeight()/2 || ballPos.y - ball.getHeight()/2 < 0){
 			ySpeed = -ySpeed;
 		}
 
-		leftPos.y += paddleSpeed;
-		rightPos.y += paddleSpeed;
+
 		ballPos.y += ySpeed;
 		ballPos.x += xSpeed;
 
@@ -122,17 +118,15 @@ public class FirstGdxGame extends ApplicationAdapter {
 			score1 +=1;
 		}
 
-
-
 		batch.begin();
 		batch.draw(paddleLeft, leftPos.x - paddleLeft.getWidth() / 2,leftPos.y - paddleLeft.getHeight() / 2);
 		batch.draw(paddleRight, rightPos.x - paddleRight.getWidth() / 2,rightPos.y - paddleRight.getHeight() / 2);
 		batch.draw(ball, ballPos.x - ball.getWidth() / 2,ballPos.y - ball.getHeight() / 2);
-		font.draw(batch, "Score: " + "player1: " + score1+ " player2: " + score2, 40, Gdx.graphics.getHeight()-40);
+		font.draw(batch, "Score: " + "player1: " + score1+ " player2: " + score2, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()-40);
 		font.getData().setScale(4, 4);
 		batch.end();
 	}
 	
 	@Override
-	public void dispose () { batch.dispose();}
+	public void dispose () { batch.dispose(); font.dispose();}
 }
