@@ -29,8 +29,9 @@ public class FirstGdxGame extends ApplicationAdapter {
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
+		font = new BitmapFont();
 		recTextL = new Texture("paddle1.png");
-		recTextR = new Texture("paddle2.png");
+		recTextR = new Texture("paddle1.png");
 		ballText = new Texture("ball.png");
 		paddleRight = new Sprite(recTextR);
 		paddleLeft = new Sprite(recTextL);
@@ -40,19 +41,13 @@ public class FirstGdxGame extends ApplicationAdapter {
 		ballPos = new Vector3(Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2,0);
 	}
 
-	/*public boolean insideScreen(float y, Sprite paddle){
-		if(y > Gdx.graphics.getHeight() - paddle.getHeight()/2 || y - paddle.getHeight()/2 < 0){
-			return true;
-		}
-		return false;
-	}*/
-	/*public boolean IsInsideScreen(float x, float y){
-		if(leftPos.x < Gdx.graphics.getWidth()-paddleLeft.getWidth()/2 ||leftPos.x > 0+paddleLeft.getWidth()/2 &&
+	public boolean IsInsideScreen(float x, float y){
+		if(leftPos.x ==  paddleRight.getWidth() &&
 				leftPos.y< Gdx.graphics.getHeight()-paddleLeft.getHeight()/2 || leftPos.y > 0+paddleLeft.getHeight()/2) {
 			return true;
 		}
 		return false;
-	}*/
+	}
 
 
 	@Override
@@ -60,12 +55,12 @@ public class FirstGdxGame extends ApplicationAdapter {
 		Gdx.gl.glClearColor(0, 0, 0, 1);
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
-		/*if (Gdx.input.isTouched() && IsInsideScreen(leftPos.x, leftPos.y)) {
-			leftPos.x = Gdx.graphics.getWidth();
+		if (Gdx.input.isTouched() && IsInsideScreen(leftPos.x, leftPos.y)) {
+			leftPos.x = paddleRight.getWidth();
 			leftPos.y = Gdx.graphics.getHeight()-Gdx.input.getY();
 
-			if (leftPos.x > Gdx.graphics.getWidth() ||leftPos.x < Gdx.graphics.getWidth()  ) {
-				leftPos.x = Gdx.graphics.getWidth() ;
+			if (leftPos.x > paddleRight.getWidth() || leftPos.x < paddleRight.getWidth() ) {
+				leftPos.x = paddleRight.getWidth();
 			}
 			if (leftPos.y > Gdx.graphics.getHeight() - paddleLeft.getHeight() / 2) {
 				leftPos.y = Gdx.graphics.getHeight() - paddleLeft.getHeight()/2;
@@ -73,12 +68,15 @@ public class FirstGdxGame extends ApplicationAdapter {
 			if (leftPos.y < 0+ paddleLeft.getHeight()/2) {
 				leftPos.y = 0 + paddleLeft.getHeight()/2;
 			}
-		}*/
+		}
+
+		if(rightPos.x > Gdx.graphics.getHeight()-paddleRight.getHeight()/2){
+			score2 += 1;
+		}
 
 		if(rightPos.y > Gdx.graphics.getHeight() - paddleRight.getHeight()/2 || rightPos.y - paddleRight.getHeight()/2 < 0){
 			paddleSpeed = -paddleSpeed;
 		}
-		rightPos.y += paddleSpeed;
 
 		if(ballPos.y > Gdx.graphics.getHeight() - ball.getHeight()/2 || ballPos.y - ball.getHeight()/2 < 0){
 			ySpeed = -ySpeed;
@@ -86,6 +84,8 @@ public class FirstGdxGame extends ApplicationAdapter {
 
 		ballPos.y += ySpeed;
 		ballPos.x += xSpeed;
+		rightPos.y += paddleSpeed;
+
 
 		recL = new Rectangle(leftPos.x,leftPos.y,paddleLeft.getWidth(), paddleLeft.getHeight());
 		recR = new Rectangle(rightPos.x, rightPos.y, paddleRight.getWidth(),paddleRight.getHeight());
