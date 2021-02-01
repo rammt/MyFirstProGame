@@ -60,7 +60,7 @@ public class FirstGdxGame extends ApplicationAdapter {
 		batch.begin();
 		batch.draw(sprite, vec.x-sprite.getWidth()/2, vec.y-sprite.getHeight()/2);
 		font.draw(batch, "Position: " + "x: " + vec.x + " y: " + vec.y, 40, Gdx.graphics.getHeight()-40);
-		font.getData().setScale(4, 4);
+		font.getData().setScale(3, 3);
 		batch.end();
 	}
 	
