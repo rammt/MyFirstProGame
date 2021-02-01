@@ -1,0 +1,4 @@
+#Mon Feb 01 19:51:55 CET 2021
+base.0=/Users/tir/AndroidStudioProjects/MyFirstProGame/Game1.1-1.3/android/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex
