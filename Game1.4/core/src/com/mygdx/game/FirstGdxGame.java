@@ -104,11 +104,11 @@ public class FirstGdxGame extends ApplicationAdapter {
 		batch.draw(paddleRight, recR.x,recR.y, 50, 250);
 		batch.draw(ball, recB.x,recB.y, 30, 30);
 		font.draw(batch, "Score: " + "player1: " + score1+ " player2: " + score2, Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()-40);
-		if(score1 > 5){
+		if(score1 > 21){
 			batch.draw(backgroundSprite, 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 			font.draw(batch, "You Win", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2 );
 		}
-		if(score2 > 5){
+		if(score2 > 21){
 			batch.draw(backgroundSprite, 0,0, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 			font.draw(batch, "You Lose", Gdx.graphics.getWidth()/2, Gdx.graphics.getHeight()/2 );
 		}
