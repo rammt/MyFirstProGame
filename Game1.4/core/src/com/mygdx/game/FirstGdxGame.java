@@ -15,8 +15,8 @@ public class FirstGdxGame extends ApplicationAdapter {
 	private SpriteBatch batch;
 	private Texture recTextL, recTextR,ballText, background;
 	private Sprite paddleLeft, paddleRight,ball, backgroundSprite;
-	private float xSpeed = 6f;
-	private float ySpeed = 6f;
+	private float xSpeed = -6f;
+	private float ySpeed = -6f;
 	private float paddleSpeed = 10f;
 	private Rectangle recL, recR, recB;
 	private int score1,score2 = 0;
@@ -52,6 +52,7 @@ public class FirstGdxGame extends ApplicationAdapter {
 		recB.x = Gdx.graphics.getWidth()/2;
 		recB.y = Gdx.graphics.getHeight()/2;
 	}
+
 
 	@Override
 	public void render () {
@@ -96,6 +97,8 @@ public class FirstGdxGame extends ApplicationAdapter {
 
 		if(recB.overlaps(recR) || recB.overlaps(recL)){
 			xSpeed = -xSpeed;
+			xSpeed += 1f;
+			ySpeed += 1f;
 		}
 
 
