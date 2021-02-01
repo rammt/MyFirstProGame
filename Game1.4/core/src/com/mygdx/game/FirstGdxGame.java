@@ -2,18 +2,15 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.ApplicationAdapter;
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
-import java.util.Random;
 
 public class FirstGdxGame extends ApplicationAdapter {
 	private SpriteBatch batch;
@@ -27,18 +24,7 @@ public class FirstGdxGame extends ApplicationAdapter {
 	private Rectangle recL, recR, recB;
 	private int score1,score2 = 0;
 	private BitmapFont font;
-	private float countDown;
 
-	private int randomNumber;
-
-	/*public void randomSpeeed(float deltaTime) {
-		countDown -= deltaTime;
-		if (countDown <= 0) {
-			Random random = new Random();
-			randomNumber= random.nextInt(3) + 1;
-			countDown += 1000; // add one second
-		}
-	}*/
 
 	@Override
 	public void create () {
@@ -60,13 +46,13 @@ public class FirstGdxGame extends ApplicationAdapter {
 		}
 		return false;
 	}*/
-	public boolean IsInsideScreen(float x, float y){
+	/*public boolean IsInsideScreen(float x, float y){
 		if(leftPos.x < Gdx.graphics.getWidth()-paddleLeft.getWidth()/2 ||leftPos.x > 0+paddleLeft.getWidth()/2 &&
 				leftPos.y< Gdx.graphics.getHeight()-paddleLeft.getHeight()/2 || leftPos.y > 0+paddleLeft.getHeight()/2) {
 			return true;
 		}
 		return false;
-	}
+	}*/
 
 
 	@Override
@@ -93,12 +79,10 @@ public class FirstGdxGame extends ApplicationAdapter {
 			paddleSpeed = -paddleSpeed;
 		}
 		rightPos.y += paddleSpeed;
-		// Change ball direction
 
 		if(ballPos.y > Gdx.graphics.getHeight() - ball.getHeight()/2 || ballPos.y - ball.getHeight()/2 < 0){
 			ySpeed = -ySpeed;
 		}
-
 
 		ballPos.y += ySpeed;
 		ballPos.x += xSpeed;

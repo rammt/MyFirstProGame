@@ -1,4 +1,4 @@
-#Sat Jan 30 12:04:32 CET 2021
+#Mon Feb 01 13:19:44 CET 2021
 base.0=/Users/vildealmestad/Desktop/Informatikk/4.Klasse/ProgArk/Øving1/Game 1.4/MyFirstProGame/Game1.4/android/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
